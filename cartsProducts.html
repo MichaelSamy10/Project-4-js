@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Carts Products</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="index.html" class="brand text-uppercase">Online Shopping</a>
+          <div id="welcome" class="fs-4 fst-italic text-primary"></div>
+
+          <nav>
+            <ul id="user_info" class="mt-2">
+              <li class="shopping_cart">
+                <div class="carts_products">
+                  <div></div>
+                  <a href="cartsProducts.html">View All Products</a>
+                </div>
+              </li>
+              <li><a href="#" id="logout">Logout</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <h2 class="text-center mt-4">Carts Products</h2>
+    <section class="products-section mt-5 mb-5">
+      <div class="container">
+        <!-- Products in cart -->
+        <div class="products row justify-content-center gap-5"></div>
+      </div>
+    </section>
+
+    <!-- Total Price -->
+    <div class="total-price text-center fs-4"></div>
+    <hr />
+
+    <h2 class="text-center mb-5">Favourites</h2>
+
+    <div class="glide">
+      <div class="glide__track container" data-glide-el="track">
+        <!-- Slides content -->
+        <ul class="glide__slides"></ul>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/products.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/carts.js"></script>
+  </body>
+</html>
