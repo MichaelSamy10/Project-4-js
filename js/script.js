@@ -2,7 +2,7 @@ const links = document.querySelector("#links");
 const userInfo = document.querySelector("#user_info");
 const userName = document.querySelector("#user");
 const welcome = document.querySelector("#welcome");
-const logOutBtn = document.querySelector("#logout");
+const logOutBtn = document.querySelector(".logout");
 const dropdownButton = document.getElementById("dropdown");
 const dropdownItems = document.querySelectorAll(".dropdown-item");
 const badge = document.querySelector(".badge");
@@ -10,10 +10,16 @@ const badge = document.querySelector(".badge");
 if (localStorage.getItem("logged-in") === "true") {
   links.style.display = "none";
   userInfo.style.display = "flex";
-  welcome.innerHTML = `Welcome ${localStorage.getItem("fisrtName")}`;
+  logOutBtn.style.display = "block";
+
+  welcome.innerHTML = `${localStorage.getItem(
+    "fisrtName"
+  )} <i class="fas fa-user"></i>`;
 }
 
-logOutBtn.addEventListener("click", function () {
+logOutBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  console.log("logout");
   localStorage.setItem("logged-in", "false");
   setTimeout(() => {
     window.location = "login.html";
@@ -31,14 +37,15 @@ function drawItems(products) {
   let productItems = products.map(
     (item) =>
       `
-          <div class="product-item card col-4" style="width: 18rem">
+          <div class="product-item card col-4 p-1" style="width: 18rem">
             <img src=${item.imageUrl} class="pt-3"/>
+            <hr>
             <div class="card-body">
               <p class="card-text">Product : ${item.title}</p>
               <p class="card-text">Price : ${item.price} EGP</p>
               <p class="card-text">Category : ${item.category}</p>
               <div class="product-interact d-flex justify-content-between">
-                <button class="btn btn-primary addToCartBtn" onClick="toggleCart(${item.id}, event)">Add To Cart</button>
+                <button class="btn btn-primary w-75" onClick="toggleCart(${item.id}, event)">Add To Cart &nbsp;<i class="fas fa-cart-plus"></i></button>
                 <i
                   class="far fa-heart fs-4 pt-1"
                   id="heart-icon-${item.id}"
@@ -50,8 +57,8 @@ function drawItems(products) {
           </div>
       `
   );
-
   allProducts.innerHTML = productItems.join("");
+  products.length === 0 ? (allProducts.innerHTML = "Not Found") : null;
 
   loadFavoriteIcons();
 }
@@ -97,15 +104,30 @@ function updateCartUI() {
     uniqueItems.forEach(
       (item) =>
         (cartsProduct.innerHTML += `
-      <div class="bg-light p-2 mb-2 rounded text-primary d-flex justify-content-between">
-        <p>${item.title}</p> 
-        <div>
+      <div class="bg-light-subtle p-2 mb-2 rounded text-primary d-flex justify-content-between">
+        <img src=${item.imageUrl} class="" width="50" height="50"/>
+        <p class="align-content-center">${item.title}</p> 
+        <div class="align-content-center">
             <span class="pe-3">${item.count}</span>
             <i class="fas fa-plus pe-1" style="color:green" onclick="addToCart(${item.id})"></i>
             <i class="fas fa-minus" style="color:red" onclick="removeFromCart(${item.id})"></i>
         </div>
-      </div>`)
+      </div>
+      `)
     );
+    cartsProduct.innerHTML += `<p class="total-price text-center p-2"></p>`;
+
+    const totalPrice = document.querySelector(".total-price");
+    let cart = JSON.parse(localStorage.getItem("ProductsInCart"));
+    let total = 0;
+    for (let i = 0; i < cart.length; i++) {
+      total += cart[i].price;
+    }
+    if (total == 0) {
+      totalPrice.innerHTML = "";
+    } else {
+      totalPrice.innerHTML = `Total Price = ${total} EGP`;
+    }
 
     // Update the badge
     badge.style.display = "block";
@@ -148,15 +170,24 @@ function removeFromCart(productId) {
 function toggleCart(productId, event) {
   const button = event.target;
 
-  if (button.textContent === "Add To Cart") {
-    addToCart(productId);
-    button.textContent = "Remove from Cart";
-    button.style.backgroundColor = "#DC3545";
-    button.style.border = "none";
+  if (localStorage.getItem("logged-in") === "true") {
+    if (
+      button.innerHTML === `Add To Cart &nbsp;<i class="fas fa-cart-plus"></i>`
+    ) {
+      addToCart(productId);
+      button.textContent = "Remove from Cart";
+      button.style.backgroundColor = "#DC3545";
+      button.style.border = "none";
+    } else {
+      removeFromCart(productId);
+      button.innerHTML = `Add To Cart &nbsp;<i class="fas fa-cart-plus"></i>`;
+      button.style.backgroundColor = "#0D6EFD";
+    }
   } else {
-    removeFromCart(productId);
-    button.textContent = "Add To Cart";
-    button.style.backgroundColor = "#0D6EFD";
+    setTimeout(() => {
+      window.location = "login.html";
+    }, 1000);
+    return;
   }
 }
 
@@ -169,15 +200,22 @@ function toggleFavorite(productId) {
   // Check if the product is already in favorites
   const existingProduct = favorites.find((fav) => fav.id === productId);
 
-  if (existingProduct) {
-    // Remove the product from favorites
-    favorites = favorites.filter((fav) => fav.id !== productId);
-  } else {
-    favorites.push(product);
-  }
-  localStorage.setItem("favorites", JSON.stringify(favorites));
+  if (localStorage.getItem("logged-in") === "true") {
+    if (existingProduct) {
+      // Remove the product from favorites
+      favorites = favorites.filter((fav) => fav.id !== productId);
+    } else {
+      favorites.push(product);
+    }
+    localStorage.setItem("favorites", JSON.stringify(favorites));
 
-  updateFavoriteIcon(productId);
+    updateFavoriteIcon(productId);
+  } else {
+    setTimeout(() => {
+      window.location = "login.html";
+    }, 1000);
+    return;
+  }
 }
 
 function updateFavoriteIcon(productId) {
@@ -194,18 +232,22 @@ function updateFavoriteIcon(productId) {
     if (isFavorited) {
       heartIcon.classList.remove("far");
       heartIcon.classList.add("fas");
+      heartIcon.style.color = "red";
     } else {
       heartIcon.classList.remove("fas");
       heartIcon.classList.add("far");
+      heartIcon.style.color = "black";
     }
   }
 }
 
 function loadFavoriteIcons() {
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [{}];
-  favorites.forEach((fav) => {
-    updateFavoriteIcon(fav.id);
-  });
+  if (localStorage.getItem("logged-in") === "true") {
+    favorites.forEach((fav) => {
+      updateFavoriteIcon(fav.id);
+    });
+  }
 }
 
 const searchInput = document.querySelector(".form-control");
@@ -226,6 +268,5 @@ searchInput.addEventListener("input", (e) => {
       ? item.title.toLowerCase().startsWith(e.target.value.toLowerCase())
       : item.category.toLowerCase().startsWith(e.target.value.toLowerCase())
   );
-
   drawItems(searchProducts);
 });

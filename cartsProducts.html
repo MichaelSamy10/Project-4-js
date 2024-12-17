@@ -19,31 +19,43 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css"
     />
-
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/x-icon" href="/imgs/favicon.svg" />
+
     <title>Carts Products</title>
   </head>
   <body>
-    <header>
-      <div class="container">
-        <div class="header-content">
-          <a href="index.html" class="brand text-uppercase">Online Shopping</a>
-          <div id="welcome" class="fs-4 fst-italic text-primary"></div>
+    <nav class="navbar navbar-expand-lg sticky-top border-bottom bg-body">
+      <div class="container-fluid">
+        <a href="index.html" class="navbar-brand text-uppercase">
+          <svg
+            id="logo-35"
+            width="50"
+            height="39"
+            viewBox="0 0 50 39"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.4992 2H37.5808L22.0816 24.9729H1L16.4992 2Z"
+              class="ccompli1"
+              fill="#007AFF"
+            ></path>
+            <path
+              d="M17.4224 27.102L11.4192 36H33.5008L49 13.0271H32.7024L23.2064 27.102H17.4224Z"
+              class="ccustom"
+              fill="#312ECB"
+            ></path>
+          </svg>
+          E-commerce</a
+        >
 
-          <nav>
-            <ul id="user_info" class="mt-2">
-              <li class="shopping_cart">
-                <div class="carts_products">
-                  <div></div>
-                  <a href="cartsProducts.html">View All Products</a>
-                </div>
-              </li>
-              <li><a href="#" id="logout">Logout</a></li>
-            </ul>
-          </nav>
-        </div>
+        <a href="" id="logout" class="nav-link fs-5"
+          >Logout <i class="fas fa-sign-out-alt"></i
+        ></a>
       </div>
-    </header>
+    </nav>
+
     <h2 class="text-center mt-4">Carts Products</h2>
     <section class="products-section mt-5 mb-5">
       <div class="container">
@@ -56,8 +68,21 @@
     <div class="total-price text-center fs-4"></div>
     <hr />
 
-    <h2 class="text-center mb-5">Favourites</h2>
+    <div class="fav-header">
+      <h2 class="text-center" style="cursor: context-menu">Favourites</h2>
+      <div
+        class="mb-5 line"
+        style="
+          width: 80px;
+          height: 2px;
+          background-color: #0d6efd;
+          margin: auto;
+          display: block;
+        "
+      ></div>
+    </div>
 
+    <div class="empty"></div>
     <div class="glide">
       <div class="glide__track container" data-glide-el="track">
         <!-- Slides content -->
@@ -65,6 +90,41 @@
       </div>
     </div>
 
+    <footer class="border-top">
+      <div
+        class="container d-flex flex-wrap justify-content-between align-items-center my-4"
+      >
+        <div class="col-md-4 d-flex align-items-center">
+          <a
+            href="/"
+            class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
+          >
+            <svg class="bi" width="30" height="24">
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+          </a>
+          <span class="text-muted">© 2024 E-commerce, Inc</span>
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+          <li class="ms-3">
+            <a class="text-muted fs-5" href="#"
+              ><i class="fab fa-facebook"></i
+            ></a>
+          </li>
+          <li class="ms-3">
+            <a class="text-muted fs-5" href="#"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </li>
+          <li class="ms-3">
+            <a class="text-muted fs-5" href="#"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>

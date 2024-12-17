@@ -4,28 +4,39 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
 }
 
-header {
-  height: 80px;
-  padding: 10px 0;
-  background-color: rgb(187, 187, 187);
+footer {
+  margin-top: auto; /* Push footer to bottom */
 }
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+p,
+span {
+  pointer-events: none;
 }
-.header-content .brand {
-  font-size: 32px;
-  text-decoration: none;
-  color: #fff;
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/assets/fonts/Poppins/Poppins-Medium.ttf") format("woff");
+  font-weight: 700;
+  font-style: normal;
 }
+
+body {
+  font-family: "Poppins";
+}
+
 nav ul {
   display: flex;
   list-style: none;
 }
+.nav-link:hover {
+  color: #0d6efd !important;
+}
+
 nav li a {
   display: block;
   color: #fff;
@@ -43,30 +54,21 @@ nav li a {
   margin: auto;
 }
 .product-item {
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 .product-item:hover {
-  /* scale: 1.05; */
+  scale: 1.03;
   border: 1px solid #0d6efd;
 }
 
 /* **********************form***************************** */
-.section-form {
-  margin: 50px auto;
-  width: 70%;
-  background-color: rgb(212, 211, 211);
-  padding: 20px;
-}
 
 nav ul#user_info {
   display: none;
 }
-
-nav ul#user_info li #logout {
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
+.logout {
+  display: none;
 }
 
 nav ul#user_info li i {
@@ -83,10 +85,10 @@ nav ul#user_info li {
 
 .carts_products {
   position: absolute;
-  width: 300px;
+  width: 350px;
   transform: translate(-250px, 0);
   background-color: rgb(187, 187, 187);
-  top: 61px;
+  top: 50px;
   padding: 10px;
   border-radius: 0 0 10px 10px;
   z-index: 100;
@@ -137,10 +139,6 @@ nav ul#user_info li .badge {
   transition: all 0.5s;
 }
 
-.fas {
-  color: red;
-}
-
 .glide__slide img {
   width: 200px;
   height: 200px;
@@ -165,4 +163,15 @@ nav ul#user_info li .badge {
 }
 .favorite-product:hover {
   border: 1px solid #0d6efd;
+}
+
+.fab:hover {
+  opacity: 0.8;
+}
+
+.fav-header .line {
+  transition: width 0.5s;
+}
+.fav-header:hover .line {
+  width: 140px !important;
 }

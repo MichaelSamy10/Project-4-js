@@ -1,11 +1,10 @@
 const links = document.querySelector("#links");
-const userInfo = document.querySelector("#user_info");
 const userName = document.querySelector("#user");
 const logOutBtn = document.querySelector("#logout");
+const welcome = document.querySelector("#welcome");
 
 if (localStorage.getItem("logged-in") === "true") {
-  userInfo.style.display = "flex";
-  welcome.innerHTML = `Welcome ${localStorage.getItem("fisrtName")}`;
+  logOutBtn.style.display = "block";
 }
 
 logOutBtn.addEventListener("click", function () {

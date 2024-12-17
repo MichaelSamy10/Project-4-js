@@ -121,9 +121,11 @@ function remove(productId) {
 }
 
 const allFavorites = document.querySelector(".glide__slides");
+const empty = document.querySelector(".empty");
 let favoriteItems = localStorage.getItem("favorites");
 
-let fav = JSON.parse(favoriteItems);
+let fav = favoriteItems ? JSON.parse(favoriteItems) : [];
+
 fav = fav.map(
   (item) =>
     `
@@ -132,7 +134,7 @@ fav = fav.map(
             <img src=${item.imageUrl} />
             <div class="card-body ">
               <p class="card-text">Product : ${item.title}</p>
-              <p class="card-text">Category : ${item.category} <i class="fas fa-heart fs-4 float-end" style=""></i></p>
+              <p class="card-text">Category : ${item.category} <i class="fas fa-heart fs-4 float-end" style="color:red"></i></p>
             </div>
 
           </div>
@@ -142,8 +144,20 @@ fav = fav.map(
 
 allFavorites.innerHTML = fav.join("");
 
-new Glide(".glide", {
-  type: "carousel",
-  perView: 3, // Show 3 slides at a time
-  gap: 10, // Space between slides
-}).mount();
+if (fav.length > 3) {
+  new Glide(".glide", {
+    type: "carousel",
+    perView: 3, // Show 3 slides at a time
+    gap: 10, // Space between slides
+  }).mount();
+} else {
+  new Glide(".glide", {
+    type: "slider",
+    perView: 3, // Show 3 slides at a time
+    gap: 10, // Space between slides
+  }).mount();
+
+  fav.length == 0
+    ? (empty.innerHTML = `<p class="text-center">No Favourite products !</p>`)
+    : null;
+}
