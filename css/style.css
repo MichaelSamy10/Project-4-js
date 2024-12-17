@@ -17,7 +17,6 @@ p,
 span {
   pointer-events: none;
 }
-
 @font-face {
   font-family: "Poppins";
   src: url("../assets/fonts/poppins/Poppins-Medium.ttf") format("woff");
@@ -30,6 +29,9 @@ body {
   font-family: "Poppins", "Arial", "sans-serif";
 }
 
+nav {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
 nav ul {
   display: flex;
   list-style: none;
@@ -37,7 +39,6 @@ nav ul {
 .nav-link:hover {
   color: #0d6efd !important;
 }
-
 nav li a {
   display: block;
   color: #fff;
