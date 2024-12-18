@@ -51,7 +51,7 @@ let products = [
   {
     id: 8,
     title: "Jacket",
-    price: 10000,
+    price: 1000,
     category: "Fashion",
     imageUrl: "imgs/fashion/jacket.jpg",
   },
