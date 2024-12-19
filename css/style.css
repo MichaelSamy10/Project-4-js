@@ -96,6 +96,13 @@ nav ul#user_info li {
   z-index: 100;
   display: none;
 }
+@media screen and (max-width: 991px) {
+  .carts_products {
+    width: 350px;
+    transform: translate(0, 0);
+    background-color: rgb(187, 187, 187);
+  }
+}
 .carts_products .cart-products-box {
   padding: 0 10px;
   max-height: 300px;
