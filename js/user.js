@@ -7,8 +7,8 @@ if (localStorage.getItem("logged-in") === "true") {
   logOutBtn.style.display = "block";
 }
 
-logOutBtn.addEventListener("click", function () {
-  // localStorage.clear();
+logOutBtn.addEventListener("click", function (e) {
+  e.preventDefault();
   localStorage.setItem("logged-in", "false");
   setTimeout(() => {
     window.location = "login.html";

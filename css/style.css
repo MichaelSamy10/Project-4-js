@@ -180,3 +180,20 @@ nav ul#user_info li .badge {
 .fav-header:hover .line {
   width: 140px !important;
 }
+
+/* Login */
+@media screen and (max-width: 1024px) {
+  .section-form div {
+    flex-direction: column;
+  }
+  .section-form div img {
+    /* height: auto; */
+  }
+  .section-form div form {
+    margin: 20px 0;
+  }
+}
+
+.glide__slide {
+  width: 400px !important;
+}

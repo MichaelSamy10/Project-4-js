@@ -12,14 +12,15 @@ function drawCartProducts(CartProducts) {
   let cart = CartProducts.map(
     (item) =>
       `
-              <div class="product-cart-item col-4" >
+              <div class="product-cart-item col-lg-4 col-sm-6" >
                 <div class="row p-3">
-                  <img src=${item.imageUrl} class="col-5"/>
-                  <div class="col-7 align-content-center">
+                  <img src=${item.imageUrl} class="col-lg-5 col-sm-10 m-auto mb-sm-3"/>
+
+                  <div class="col-lg-7 col-sm-12 align-content-center text-center">
                     <p>Product : ${item.title}</p>
                     <p>Price : ${item.price} EGP</p>
                     <p>Category : ${item.category}</p>
-                    <div class="product-interact d-flex gap-5 ">
+                    <div class="product-interact d-flex gap-5 justify-content-center">
                       <div class=" align-content-center">
                         <span class="pe-2 fs-5">
                           ${item.count}
@@ -131,10 +132,11 @@ fav = fav.map(
     `
       <li class="glide__slide mb-4">
           <div class="favorite-product card w-75 container rounded rounded-4" >
+           <i class="fas fa-heart fs-4 text-end mt-2" style="color:red"></i>
             <img src=${item.imageUrl} />
             <div class="card-body ">
               <p class="card-text">Product : ${item.title}</p>
-              <p class="card-text">Category : ${item.category} <i class="fas fa-heart fs-4 float-end" style="color:red"></i></p>
+              <p class="card-text">Category : ${item.category}</p>
             </div>
 
           </div>

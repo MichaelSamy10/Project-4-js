@@ -19,7 +19,6 @@ if (localStorage.getItem("logged-in") === "true") {
 
 logOutBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  console.log("logout");
   localStorage.setItem("logged-in", "false");
   setTimeout(() => {
     window.location = "login.html";
