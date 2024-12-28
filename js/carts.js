@@ -114,7 +114,6 @@ function calcTotalPrice() {
 
 function remove(productId) {
   let cart = JSON.parse(localStorage.getItem("ProductsInCart"));
-
   const filteredCart = cart.filter((item) => item.id !== productId);
 
   localStorage.setItem("ProductsInCart", JSON.stringify(filteredCart));

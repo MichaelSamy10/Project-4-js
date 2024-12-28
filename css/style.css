@@ -29,6 +29,10 @@ body {
   font-family: "Poppins", "Arial", "sans-serif";
 }
 
+#links {
+  display: none;
+}
+
 nav {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
 }
@@ -56,6 +60,7 @@ nav li a {
   margin: auto;
 }
 .product-item {
+  background-color: rgb(235, 235, 235);
   transition: 0.5s;
 }
 
@@ -89,7 +94,7 @@ nav ul#user_info li {
   position: absolute;
   width: 350px;
   transform: translate(-250px, 0);
-  background-color: rgb(187, 187, 187);
+  background-color: rgb(235, 235, 235);
   top: 50px;
   padding: 10px;
   border-radius: 0 0 10px 10px;
@@ -161,7 +166,7 @@ nav ul#user_info li .badge {
 }
 
 .product-cart-item {
-  background-color: rgb(187, 187, 187);
+  background-color: rgb(235, 235, 235);
   border: 1px solid rgb(187, 187, 187);
   border-radius: 15px;
   transition: 0.3s;

@@ -15,6 +15,8 @@ if (localStorage.getItem("logged-in") === "true") {
   welcome.innerHTML = `${localStorage.getItem(
     "fisrtName"
   )} <i class="fas fa-user"></i>`;
+} else {
+  links.style.display = "flex";
 }
 
 logOutBtn.addEventListener("click", function (e) {
@@ -104,7 +106,7 @@ function updateCartUI() {
       (item) =>
         (cartsProduct.innerHTML += `
       <div class="bg-light-subtle p-2 mb-2 rounded text-primary d-flex justify-content-between">
-        <img src=${item.imageUrl} class="" width="50" height="50"/>
+        <img src=${item.imageUrl} class="" width="50" height="50" style="object-fit: contain;"/>
         <p class="align-content-center">${item.title}</p> 
         <div class="align-content-center">
             <span class="pe-3">${item.count}</span>
